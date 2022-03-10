@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class LaunchManager : MonoBehaviourPunCallbacks
@@ -13,6 +14,11 @@ public class LaunchManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject _lobbyPanel;
 
     #region Unity Methods
+
+    private void Awake()
+    {
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
 
     private void Start()
     {
@@ -87,7 +93,9 @@ public class LaunchManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.LogFormat($"{PhotonNetwork.NickName} joined to {PhotonNetwork.CurrentRoom.Name}!!!");
+        Debug.LogFormat($"{PhotonNetwork.NickName} joined to {PhotonNetwork.CurrentRoom.Name}!!! Scene: {SceneManager.GetActiveScene().name}");
+        
+        PhotonNetwork.LoadLevel("GameScene");
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -99,7 +107,7 @@ public class LaunchManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.LogFormat($"{newPlayer.NickName} joined to {PhotonNetwork.CurrentRoom.Name}!!! Player Count = {PhotonNetwork.CurrentRoom.PlayerCount}.");
+        Debug.LogFormat($"{newPlayer.NickName} joined to {PhotonNetwork.CurrentRoom.Name}!!! Player Count = {PhotonNetwork.CurrentRoom.PlayerCount}. Scene: {SceneManager.GetActiveScene().name}");
     }
 
     #endregion
