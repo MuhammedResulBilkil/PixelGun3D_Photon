@@ -7,10 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private GameObject _playerPrefab;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PhotonNetwork.IsConnected)
+        {
+            if (_playerPrefab != null)
+            {
+                float randomPoint = Random.Range(-20f, 20f);
+                
+                PhotonNetwork.Instantiate(_playerPrefab.name, new Vector3(randomPoint, 0f, randomPoint), Quaternion.identity);
+            }
+            
+        }
     }
 
     // Update is called once per frame
