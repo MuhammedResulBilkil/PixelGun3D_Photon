@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class PlayerSetup : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Camera _fpsCamera;
     [SerializeField] private AudioListener _audioListener;
+    [SerializeField] private TextMeshProUGUI _playerNameText;
 
     private MovementController _movementController;
     
@@ -31,11 +33,15 @@ public class PlayerSetup : MonoBehaviourPunCallbacks
             _fpsCamera.enabled = false;
             _audioListener.enabled = false;
         }
+        
+        SetPlayerUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetPlayerUI()
     {
-        
+        if (_playerNameText != null)
+        {
+            _playerNameText.text = photonView.Owner.NickName;
+        }
     }
 }
