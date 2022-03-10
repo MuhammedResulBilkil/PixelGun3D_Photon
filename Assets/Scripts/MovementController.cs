@@ -7,9 +7,9 @@ public class MovementController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 8f;
     [SerializeField] private float _lookSensitivity = 3f;
+    [SerializeField] private Camera _fpsCamera;
 
     private Rigidbody _rigidbody;
-    private Camera _fpsCamera;
     private Vector3 _velocity = Vector3.zero;
     private Vector3 _rotation = Vector3.zero;
     private float _cameraUpAndDownRotation = 0f;
@@ -19,7 +19,6 @@ public class MovementController : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _fpsCamera = Camera.main;
     }
 
     // Update is called once per frame
