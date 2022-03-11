@@ -773,6 +773,7 @@ GameObject:
   - component: {fileID: 1539651894}
   - component: {fileID: 6547937031150131006}
   - component: {fileID: 7773514909620350560}
+  - component: {fileID: 1810256468515716413}
   - component: {fileID: 1539651893}
   - component: {fileID: 2987312426905027236}
   m_Layer: 0
@@ -868,6 +869,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &1810256468515716413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302653980449634580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca218f38b0df4ccabc41561d74274c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fpsCamera: {fileID: 762602616}
+  _fireRate: 0.1
 --- !u!114 &1539651893
 MonoBehaviour:
   m_ObjectHideFlags: 0
