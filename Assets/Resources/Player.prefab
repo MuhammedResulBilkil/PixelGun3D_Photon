@@ -927,6 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _healthBarImage: {fileID: 920733669}
 --- !u!1 &2302653980457853474
 GameObject:
   m_ObjectHideFlags: 0
