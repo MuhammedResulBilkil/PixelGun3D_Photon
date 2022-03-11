@@ -8,10 +8,12 @@ public class TakingDamage : MonoBehaviour
     [SerializeField] private float _maxHealth;
     [SerializeField] private Image _healthBarImage;
 
+    private PhotonView _photonView;
     private float _currentHealth;
 
     private void Awake()
     {
+        _photonView = GetComponent<PhotonView>();
         _currentHealth = _maxHealth;
 
         _healthBarImage.fillAmount = _currentHealth / _maxHealth;
@@ -34,8 +36,9 @@ public class TakingDamage : MonoBehaviour
         }
     }
 
-    public void Die()
+    private void Die()
     {
-        
+        if(_photonView.IsMine && PhotonNetwork.IsConnected)
+            GameController.Instance.LeaveRoom();
     }
 }
